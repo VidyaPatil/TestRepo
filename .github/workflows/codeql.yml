@@ -51,7 +51,7 @@ jobs:
     - name: Setup .NET SDK
       uses: actions/setup-dotnet@v2
       with:
-        dotnet-version: '4.7'  # Change to the desired .NET SDK version
+        dotnet-version: '4.7.2'  # Change to the desired .NET SDK version
 
     - name: Restore dependencies
       run: dotnet restore WebApplicationForCodeQl.sln
