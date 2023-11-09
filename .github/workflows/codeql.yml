@@ -47,13 +47,13 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-    - name: Setup .NET SDK
-      uses: actions/setup-dotnet@v2
-      with:
-        dotnet-version: '4.7.2'
-        install-dir: ~/.dotnet
-        include-prerelease: true
-        dotnet-install-url: https://dot.net/v1/dotnet-install.sh
+ 
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+     
+    - name: install package
+      run:  npm install 
+    
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v2
@@ -69,8 +69,8 @@ jobs:
 
     # Autobuild attempts to build any compiled languages (C/C++, C#, Go, Java, or Swift).
     # If this step fails, then you should remove it and run the build manually (see below)
-    - name: Autobuild
-      uses: github/codeql-action/autobuild@v2
+   # - name: Autobuild
+   #   uses: github/codeql-action/autobuild@v2
 
 
 
@@ -80,9 +80,8 @@ jobs:
     #   If the Autobuild fails above, remove it and uncomment the following three lines.
     #   modify them (or add more) to build your code if your project, please refer to the EXAMPLE below for guidance.
 
-    # - run: |
-    #     echo "Run, Build Application using script"
-    #     ./location_of_script_within_repo/buildscript.sh
+    - name: Build
+      run: dotnet build --no-restore WebApplicationForCodeQL.sln
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
