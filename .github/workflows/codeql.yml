@@ -50,9 +50,7 @@ jobs:
  
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
-     
-    - name: install package
-      run:  npm install 
+
     
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
